@@ -121,8 +121,8 @@ else
 fi
 
 logger_ads "Fetching block lists"
-if [[ -n "$(find "$hostsJffs" -mtime +3)" || -n "$(find "$dnsmasqJffs" -mtime +3)" || ! -e $hostsJffs || ! -e $dnsmasqJffs ]]; then
-  logger_ads "Lists do not exist or are more than 3 days old"
+if [[ -n "$(find "$hostsJffs" -mtime +7)" || -n "$(find "$dnsmasqJffs" -mtime +7)" || ! -e $hostsJffs || ! -e $dnsmasqJffs ]]; then
+  logger_ads "Lists do not exist or are more than 1 week old"
 
   logger_ads "Downloading hosts file"
   wget -q -O - "$hostsUrl" | grep "^0.0.0.0" | grep -v localhost | tr -d '\015' > $hostsTmp
